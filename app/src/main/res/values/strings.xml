@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Highlights2</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="cam_button">CAM</string>
+    <string name="noise_button">NOISE</string>
+    <string name="shooter_button">SHOOT</string>
+    <string name="camera_not_found">Camera not found</string>
+</resources>
