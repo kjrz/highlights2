@@ -2,6 +2,7 @@ package com.github.kjrz.highlights2;
 
 import android.content.Context;
 import android.hardware.Camera;
+import android.media.MediaRecorder;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,16 +18,14 @@ import java.util.List;
 public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
     private static final String TAG = "CameraPreview";
 
-    SurfaceView mSurfaceView;
-    SurfaceHolder mHolder;
-    Camera.Size mPreviewSize;
-    List<Camera.Size> mSupportedPreviewSizes;
-    Camera mCamera;
+    private SurfaceHolder mHolder;
 
+    private Camera.Size mPreviewSize;
+    private List<Camera.Size> mSupportedPreviewSizes;
+    private Camera mCamera;
     CameraPreview(Context context, SurfaceView view) {
         super(context);
-        mSurfaceView = view;
-        mHolder = mSurfaceView.getHolder();
+        mHolder = view.getHolder();
         mHolder.addCallback(this);
     }
 
@@ -141,5 +140,9 @@ public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
 
         mCamera.setParameters(parameters);
         mCamera.startPreview();
+    }
+
+    public SurfaceHolder getHolder() {
+        return mHolder;
     }
 }
