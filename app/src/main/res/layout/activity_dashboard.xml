@@ -21,4 +21,22 @@
         android:id="@+id/noiseButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GRAFIKA"
+        android:id="@+id/grafikaButton"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/noiseButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAM2"
+        android:id="@+id/cam2Button"
+        android:layout_below="@+id/grafikaButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp" />
 </RelativeLayout>

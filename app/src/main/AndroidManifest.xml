@@ -26,6 +26,17 @@
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name=".CameraActivity2"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.android.grafika.ContinuousCaptureActivity"
+            android:label="@string/app_name"
+            >
+            <!--android:screenOrientation="landscape" >-->
+        </activity>
     </application>
 
 </manifest>

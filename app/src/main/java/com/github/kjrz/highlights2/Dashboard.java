@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.grafika.ContinuousCaptureActivity;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -29,6 +30,22 @@ public class Dashboard extends AppCompatActivity {
         noiseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "YO!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button grafikaButton = (Button) findViewById(R.id.grafikaButton);
+        grafikaButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent grafikaIntent = new Intent(Dashboard.this, ContinuousCaptureActivity.class);
+                Dashboard.this.startActivity(grafikaIntent);
+            }
+        });
+
+        Button cam2Button = (Button) findViewById(R.id.cam2Button);
+        cam2Button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent cam2Intent = new Intent(Dashboard.this, CameraActivity2.class);
+                Dashboard.this.startActivity(cam2Intent);
             }
         });
     }

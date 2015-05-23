@@ -48,7 +48,7 @@ public class CameraActivity extends Activity {
 
         setContentView(R.layout.activity_camera);
 
-        mPreview = new CameraPreview(this, (SurfaceView) findViewById(R.id.surfaceView));
+        mPreview = new CameraPreview(this, (SurfaceView) findViewById(R.id.surfaceView_camActivity));
         mPreview.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         ((FrameLayout) findViewById(R.id.layout)).addView(mPreview);
         mPreview.setKeepScreenOn(true);

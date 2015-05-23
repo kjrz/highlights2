@@ -1,8 +1,8 @@
 package com.github.kjrz.highlights2;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.hardware.Camera;
-import android.media.MediaRecorder;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * @author kjrz
  */
+@SuppressLint("ViewConstructor")
 public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
     private static final String TAG = "CameraPreview";
 
@@ -23,6 +24,7 @@ public class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
     private Camera.Size mPreviewSize;
     private List<Camera.Size> mSupportedPreviewSizes;
     private Camera mCamera;
+
     CameraPreview(Context context, SurfaceView view) {
         super(context);
         mHolder = view.getHolder();
