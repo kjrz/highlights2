@@ -138,4 +138,9 @@
     <string name="title_color_bar">RGB color bars</string>
     <string name="title_scheduled_swap">Scheduled swap</string>
     <string name="title_texture_from_camera">Texture from camera</string>
+    <string name="cam2button">CAM2</string>
+    <string name="galleryButton">GALLERY</string>
+    <string name="clapNoted">Noted</string>
+    <string name="pitchHeard">Heard pitch!</string>
+    <string name="clapInstruction">CLAP</string>
 </resources>

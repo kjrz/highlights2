@@ -1,9 +1,7 @@
 package com.github.kjrz.highlights2;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.hardware.Camera;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -14,24 +12,24 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.android.grafika.AspectFrameLayout;
-import com.android.grafika.CameraUtils;
-
 import java.io.File;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+
+import be.hogent.tarsos.dsp.onsets.OnsetHandler;
 
 /**
  * @author kjrz
  */
 public class CameraActivity2 extends Activity {
     private static final String TAG = "CameraActivity2";
+    public static final String STORAGE_DIR = "highlights2";
 
     private CameraPreview2 mPreview;
     private Camera mCamera;
     private File mStorageDir;
+
+    private final ClapCatcher mClapper = new ClapCatcher();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +37,7 @@ public class CameraActivity2 extends Activity {
         setLayout();
         setPreview();
         getStorageDir();
+        setClapHandler();
     }
 
     private void setLayout() {
@@ -67,7 +66,7 @@ public class CameraActivity2 extends Activity {
     }
 
     private void getStorageDir() {
-        mStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "highlights2");
+        mStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), STORAGE_DIR);
         if (!mStorageDir.exists()) {
             if (!mStorageDir.mkdirs()) {
                 Log.w(TAG, "failed to create directory");
@@ -75,11 +74,26 @@ public class CameraActivity2 extends Activity {
         }
     }
 
+    private void setClapHandler() {
+        mClapper.onCreate(ClapCatcher.getSensitivityFromPreferences(this), new OnsetHandler() {
+            @Override
+            public void handleOnset(double time, double salience) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        saveFile();
+                    }
+                });
+            }
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         mCamera = Camera.open(0);
         mPreview.setCamera(mCamera);
+        mClapper.onResume();
     }
 
     @Override
@@ -89,5 +103,6 @@ public class CameraActivity2 extends Activity {
         mCamera.stopPreview();
         mCamera.release();
         mCamera = null;
+        mClapper.onPause();
     }
 }
